@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.amjad.school.ui.fragment.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_logo_off"
+        android:name="com.amjad.school.ui.fragment.ClassesFragment"
+        android:label="@string/menu_logo_off"
+        tools:layout="@layout/fragment_logo_off" />
+
+    <fragment
+        android:id="@+id/nav_marks_student"
+        android:name="com.amjad.school.ui.fragment.MarksStudentsFragment"
+        android:label="@string/menu_marks_students"
+        tools:layout="@layout/fragment_marks_students" />
+
+    <fragment
+        android:id="@+id/nav_classes_room"
+        android:name="com.amjad.school.ui.fragment.PresenceFragment"
+        android:label="@string/menu_ClasseRoom"
+        tools:layout="@layout/fragment_marks_students" />
+    <fragment
+        android:id="@+id/nav_exams"
+        android:name="com.amjad.school.ui.fragment.PresenceFragment"
+        android:label="@string/menu_exams"
+        tools:layout="@layout/fragment_exams" />
+
+    <fragment
+        android:id="@+id/nav_money_file"
+        android:name="com.amjad.school.ui.fragment.PresenceFragment"
+        android:label="@string/menu_money_file"
+        tools:layout="@layout/fragment_money_file" />
+    <fragment
+        android:id="@+id/nav_presence"
+        android:name="com.amjad.school.ui.fragment.PresenceFragment"
+        android:label="@string/menu_presence"
+        tools:layout="@layout/fragment_presence" />
+    <fragment
+        android:id="@+id/nav_reports"
+        android:name="com.amjad.school.ui.fragment.PresenceFragment"
+        android:label="@string/menu_reports"
+        tools:layout="@layout/fragment_reports" />
+
+    <fragment
+        android:id="@+id/nav_student_activity"
+        android:name="com.amjad.school.ui.fragment.PresenceFragment"
+        android:label="@string/menu_student_activity"
+        tools:layout="@layout/fragment_student_activity" />
+    <fragment
+        android:id="@+id/nav_student_record"
+        android:name="com.amjad.school.ui.fragment.PresenceFragment"
+        android:label="@string/menu_student_record"
+        tools:layout="@layout/fragment_student_record" />
+
+</navigation>
