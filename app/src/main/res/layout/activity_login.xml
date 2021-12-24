@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gridet_main"
-    tools:context=".ui.activity.LoginActivity">
+    tools:context=".ui.activity.SplashActivity">
 
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="117dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:text="TextView"
-        android:theme="@style/TextBoldTitle"
+        android:theme="@style/text_purple_200"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
