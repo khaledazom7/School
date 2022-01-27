@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "479212688468",
+    "project_id": "school-a46ff",
+    "storage_bucket": "school-a46ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479212688468:android:e9009bd808918ebffe09c1",
+        "android_client_info": {
+          "package_name": "com.amjad.school"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479212688468-q90b7433hsroeieu9en32b5vjghkcjhf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amjad.school",
+            "certificate_hash": "2cb1535dd4229d8af2a3af5ba11213796cab8639"
+          }
+        },
+        {
+          "client_id": "479212688468-rihbk9onc8m7j9jf2n8limb7m4ou21fg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOnG3sgKOF1LGa3gG5wBFK4WmmLe7g6yc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479212688468-rihbk9onc8m7j9jf2n8limb7m4ou21fg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

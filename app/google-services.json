@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "773916029147",
+    "project_id": "school-60aef",
+    "storage_bucket": "school-60aef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773916029147:android:0d8a1c7f30b00418311cfe",
+        "android_client_info": {
+          "package_name": "com.amjad.school"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773916029147-e8vjcesb3rprpkm3kbp98goa0sfvrbgn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amjad.school",
+            "certificate_hash": "2cb1535dd4229d8af2a3af5ba11213796cab8639"
+          }
+        },
+        {
+          "client_id": "773916029147-2106bj56785a454d2rft048vkduld40n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj3ZPXGreMWWpeEOcxPCt2wPhe3w3yB3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773916029147-2106bj56785a454d2rft048vkduld40n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
