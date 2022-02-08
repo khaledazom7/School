@@ -4,9 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gridet_button"
-    tools:context=".ui.activity.LoginActivity"
-    >
+    android:background="@drawable/bg_gridet_button">
 
     <TextView
         android:id="@+id/textView2"
@@ -17,7 +15,7 @@
         android:paddingRight="20dp"
         android:theme="@style/TextBoldTitle"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

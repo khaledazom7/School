@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import androidx.annotation.Keep;
 
-public class user {
+public class User {
 
     @Keep
     @SerializedName("name")
@@ -30,7 +30,7 @@ public class user {
     @SerializedName("status")
     private boolean status;
 
-    public user(String name, String email, String userImage, String dateOfBirth, String gender, String userType, String studentLevel, String phone, String address, String dateCreate, boolean status) {
+    public User(String name, String email, String userImage, String dateOfBirth, String gender, String userType, String studentLevel, String phone, String address, String dateCreate, boolean status) {
         this.name = name;
         this.email = email;
         this.userImage = userImage;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gridet_main"
-    tools:context=".ui.activity.SplashActivity">
+    tools:context=".ui.activity.RegisterActivity">
 
 
 
@@ -137,5 +137,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="93dp"
+            tools:layout_editor_absoluteY="479dp" />
+
+        <RadioButton
+            android:id="@+id/buttonadmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioOnClick"
+            android:text="admin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="460dp" />
+
+        <RadioButton
+            android:id="@+id/buttonteacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioOnClick"
+            android:text="teatcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="508dp" />
+
+        <RadioButton
+            android:id="@+id/buttonstudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioOnClick"
+            android:text="student"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="563dp" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

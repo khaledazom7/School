@@ -20,7 +20,6 @@ import java.util.Locale;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.VweHolder> {
 
 
-
     private Context context;
     private ArrayList<Category> categoryArrayList;
 
@@ -35,27 +34,26 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.VweHol
     @NonNull
     @Override
     public CategoryAdapter.VweHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =  LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.VweHolder holder, int position) {
         Category currentCategry = categoryArrayList.get(position);
-    holder.image.setImageResource(currentCategry.getImange());
-    holder.title.setText(currentCategry.getTittle());
-    holder.subtitle.setText(currentCategry.getSupTitle());
+        //holder.image.setImageResource(currentCategry.getImange());
+        //holder.title.setText(currentCategry.getTittle());
+        //holder.subtitle.setText(currentCategry.getSupTitle());
     }
 
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
         return categoryArrayList.size();
     }
 
     public class VweHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView title,subtitle;
+        TextView title, subtitle;
 
         public VweHolder(@NonNull View itemView) {
 
@@ -64,7 +62,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.VweHol
             title = itemView.findViewById(R.id.textView_title);
             subtitle = itemView.findViewById(R.id.textView_sub_title);
         }
-        }
-        }
+
     }
 }

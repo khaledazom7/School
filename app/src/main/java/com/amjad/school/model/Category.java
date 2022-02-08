@@ -1,11 +1,11 @@
 package com.amjad.school.model;
 
-public class category {
+public class Category {
     private int image;
     private String title;
     private String subTitle;
 
-    public category(int image, String title, String subTitle) {
+    public Category(int image, String title, String subTitle) {
         this.image = image;
         this.title = title;
         this.subTitle = subTitle;
