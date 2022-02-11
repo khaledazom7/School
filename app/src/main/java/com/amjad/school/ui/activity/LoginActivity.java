@@ -1,5 +1,6 @@
 package com.amjad.school.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -8,12 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amjad.school.databinding.ActivityLoginBinding;
+import com.amjad.school.model.User;
+import com.amjad.school.utils.PreferenceUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
@@ -54,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Toast.makeText(getApplicationContext(), "Successcufully Sign in", Toast.LENGTH_SHORT).show();
+                checkUserType();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -62,6 +67,31 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void checkUserType() {
+        firebaseAuth = FirebaseAuth.getInstance();//data link ربط البييانات
+String userID =firebaseUser.getUid();
+firebaseFirestore.collection("Users").document(userID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+    @Override
+    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+        User user= task.getResult().toObject(User.class);
+        String typeUser = user.getUserType();
+        String email = user.getEmail();
+        PreferenceUtils.saveEmail(email,getApplicationContext());
+        PreferenceUtils.saveEmail(email,getApplicationContext());
+
+        if (typeUser.equals("teacher")){
+            startActivity(new Intent(getApplicationContext(),TeacherActivity.class));
+
+        }else if(typeUser.equals("admin")){
+            startActivity(new Intent(getApplicationContext(),AdminActivity.class));
+
+        }
+finish();
+    }
+});
+
     }
 
 

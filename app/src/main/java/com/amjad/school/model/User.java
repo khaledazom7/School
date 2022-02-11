@@ -1,8 +1,8 @@
 package com.amjad.school.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import androidx.annotation.Keep;
+
+import com.google.gson.annotations.SerializedName;
 
 public class User {
 
@@ -29,6 +29,9 @@ public class User {
     private String dateCreate;
     @SerializedName("status")
     private boolean status;
+
+    public User() {
+    }
 
     public User(String name, String email, String userImage, String dateOfBirth, String gender, String userType, String studentLevel, String phone, String address, String dateCreate, boolean status) {
         this.name = name;

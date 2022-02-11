@@ -7,6 +7,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amjad.school.R;
+import com.amjad.school.utils.PreferenceUtils;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -17,7 +18,21 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                String email = PreferenceUtils.getEmail(getApplicationContext());
+                String typeUser = PreferenceUtils.getType(getApplicationContext());
+                if (email ==null) {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                } else {
+                    if (typeUser.equals("teacher")) {
+
+                        startActivity(new Intent(getApplicationContext(), TeacherActivity.class));
+                    } else if (typeUser.equals("admin")) {
+                        startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+                    }
+
+
+
+            }
                 finish();
 
             }
