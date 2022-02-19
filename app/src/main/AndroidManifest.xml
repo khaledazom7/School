@@ -11,18 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.School">
         <activity
-            android:name=".ui.activity.TeacherActivity"
-            android:label="@string/title_activity_teacher"
+            android:name=".ui.activity.LoginActivity"
+            android:label="Register"
             android:theme="@style/Theme.School.NoActionBar"/>
         <activity
             android:name=".ui.activity.RegisterActivity"
             android:label="Register"
-            android:theme="@style/Theme.School.NoActionBar"/>
+            android:theme="@style/Theme.School.NoActionBar" />
+        <activity android:name=".ui.activity.OpenTeacherProfile" />
+        <activity
+            android:name=".ui.activity.TeacherActivity"
+            android:label="@string/title_activity_teacher"
+            android:theme="@style/Theme.School.NoActionBar" />
         <activity
             android:name=".ui.activity.AdminActivity"
             android:label="@string/title_activity_admin"
             android:theme="@style/Theme.School.NoActionBar" />
-
         <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

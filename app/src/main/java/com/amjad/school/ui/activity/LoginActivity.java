@@ -13,6 +13,7 @@ import com.amjad.school.model.User;
 import com.amjad.school.utils.PreferenceUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseUser firebaseUser;
-    private String email,password;
+    private String email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,17 @@ public class LoginActivity extends AppCompatActivity {
 
         firebaseUser = firebaseAuth.getCurrentUser();
         longUser();
+        registerUser();
+    }
+
+    private void registerUser() {
+        binding.registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                finish();
+            }
+        });
     }
 
 
@@ -44,8 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         binding.buttonLogen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email=binding.editTextTextEmailAddress.getText().toString().trim();
-                password=binding.editTextTextPassword2.getText().toString().trim();
+                email = binding.editTextTextEmailAddress.getText().toString().trim();
+                password = binding.editTextTextPassword2.getText().toString().trim();
                 checkInputInfo();
                 signInToAccountByEmailAndPassword();
             }
@@ -53,8 +65,9 @@ public class LoginActivity extends AppCompatActivity {
 
         });
     }
+
     private void signInToAccountByEmailAndPassword() {
-        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Toast.makeText(getApplicationContext(), "Successcufully Sign in", Toast.LENGTH_SHORT).show();
@@ -63,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Error"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -71,26 +84,27 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserType() {
         firebaseAuth = FirebaseAuth.getInstance();//data link ربط البييانات
-String userID =firebaseUser.getUid();
-firebaseFirestore.collection("Users").document(userID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-    @Override
-    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-        User user= task.getResult().toObject(User.class);
-        String typeUser = user.getUserType();
-        String email = user.getEmail();
-        PreferenceUtils.saveEmail(email,getApplicationContext());
-        PreferenceUtils.saveEmail(email,getApplicationContext());
+        String userID = firebaseUser.getUid();
+        firebaseFirestore.collection("Users").document(userID).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        User user = documentSnapshot.toObject(User.class);
+                        String typeUser = user.getUserType();
+                        String email = user.getEmail();
+                        PreferenceUtils.saveEmail(email, getApplicationContext());
+                        PreferenceUtils.saveEmail(email, getApplicationContext());
 
-        if (typeUser.equals("teacher")){
-            startActivity(new Intent(getApplicationContext(),TeacherActivity.class));
+                        if (typeUser.equals("teacher")) {
+                            startActivity(new Intent(getApplicationContext(), TeacherActivity.class));
 
-        }else if(typeUser.equals("admin")){
-            startActivity(new Intent(getApplicationContext(),AdminActivity.class));
+                        } else if (typeUser.equals("admin")) {
+                            startActivity(new Intent(getApplicationContext(), AdminActivity.class));
 
-        }
-finish();
-    }
-});
+                        }
+                        finish();
+                    }
+                });
 
     }
 
@@ -99,8 +113,8 @@ finish();
 
 
         if (email.isEmpty()) {
-            binding. editTextTextEmailAddress.setError("Yuor email is Required");
-            binding. editTextTextEmailAddress.hasFocus();
+            binding.editTextTextEmailAddress.setError("Yuor email is Required");
+            binding.editTextTextEmailAddress.hasFocus();
 
             return;
         }

@@ -6,9 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.AdminActivity">
 
-    <TextView
-        android:id="@+id/textView8"
+
+    <Button
+        android:id="@+id/buttonAddTeacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Admin" />
+        android:text="@string/add_new_teacher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddTeacher" />
 </androidx.constraintlayout.widget.ConstraintLayout>
