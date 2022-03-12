@@ -58,7 +58,18 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 email = binding.editTextTextEmailAddress.getText().toString().trim();
                 password = binding.editTextTextPassword2.getText().toString().trim();
-                checkInputInfo();
+                //checkInputInfo();
+                if (email.isEmpty()) {
+                    binding.editTextTextEmailAddress.setError("Your email is Required*");
+                    binding.editTextTextEmailAddress.hasFocus();
+                    return;
+                }
+
+                if (password.isEmpty()) {
+                    binding.editTextTextPassword2.setError("The Password is Required*");
+                    binding.editTextTextPassword2.hasFocus();
+                    return;
+                }
                 signInToAccountByEmailAndPassword();
             }
 
@@ -70,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                Toast.makeText(getApplicationContext(), "Successcufully Sign in", Toast.LENGTH_SHORT).show();
                 checkUserType();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -84,25 +94,31 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserType() {
         firebaseAuth = FirebaseAuth.getInstance();//data link ربط البييانات
+        firebaseUser = firebaseAuth.getCurrentUser();
+        assert firebaseUser != null;
         String userID = firebaseUser.getUid();
         firebaseFirestore.collection("Users").document(userID).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         User user = documentSnapshot.toObject(User.class);
-                        String typeUser = user.getUserType();
-                        String email = user.getEmail();
-                        PreferenceUtils.saveEmail(email, getApplicationContext());
-                        PreferenceUtils.saveEmail(email, getApplicationContext());
-
-                        if (typeUser.equals("teacher")) {
-                            startActivity(new Intent(getApplicationContext(), TeacherActivity.class));
-
-                        } else if (typeUser.equals("admin")) {
-                            startActivity(new Intent(getApplicationContext(), AdminActivity.class));
-
+                        if (user == null) {
+                            Toast.makeText(getApplicationContext(), "You not confirm your account", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Successfully Sign in", Toast.LENGTH_SHORT).show();
+                            String typeUser = user.getUserType();
+                            String email = user.getEmail();
+                            PreferenceUtils.saveEmail(email, getApplicationContext());
+                            PreferenceUtils.saveType(typeUser, getApplicationContext());
+                            if (typeUser.equals("teacher")) {
+                                startActivity(new Intent(getApplicationContext(), TeacherActivity.class));
+                            } else if (typeUser.equals("admin")) {
+                                startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+                            } else if (typeUser.equals("student")) {
+                                //startActivity(new Intent(getApplicationContext(), StudentActivity.class));
+                            }
+                            finish();
                         }
-                        finish();
                     }
                 });
 
@@ -110,18 +126,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void checkInputInfo() {
-
-
         if (email.isEmpty()) {
             binding.editTextTextEmailAddress.setError("Yuor email is Required");
             binding.editTextTextEmailAddress.hasFocus();
-
             return;
         }
         if (password.isEmpty()) {
             binding.editTextTextPassword2.setError("Yuor password is Required");
             binding.editTextTextPassword2.hasFocus();
-
             return;
         }
     }

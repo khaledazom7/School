@@ -26,7 +26,7 @@ import java.text.DateFormat;
 import java.util.Calendar;
 
 public class RegisterActivity extends AppCompatActivity {
-    private String name, email, password, date, acountType;
+    private String name, email, password, date, acountType = "student";
     private String userImage = "https://firebasestorage.googleapis.com/v0/b/school-a46ff.appspot.com/o/acount%2Faccount.png?alt=media&token=67be701b-cbfe-49ba-9c31-afb70b1b92d1";
     private Button registerButton;
 
