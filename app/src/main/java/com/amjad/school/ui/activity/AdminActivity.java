@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amjad.school.adapter.UsersAdapter;
 import com.amjad.school.databinding.ActivityAdminBinding;
 import com.amjad.school.model.User;
+import com.amjad.school.utils.PreferenceUtils;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -39,8 +40,22 @@ private ActivityAdminBinding binding;
         });
 
         getAllteachers();
+        logout();
 
 
+
+    }
+
+    private void logout() {
+        binding.buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PreferenceUtils.saveEmail(null, getApplicationContext());
+                PreferenceUtils.saveType("", getApplicationContext());
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
 
     }
 
@@ -58,9 +73,10 @@ private ActivityAdminBinding binding;
         usersAdapter.onItemSetOnClickListener(new UsersAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                String userId=documentSnapshot.getId();
-                Intent intent=new Intent(getApplicationContext(),OpenTeacherProfile.class);
-               // intent.putExtra(UsersAdapter);
+                String teacherId=documentSnapshot.getId();
+                Intent intent =new Intent(getApplicationContext(),OpenTeacherProfile.class);
+                intent.putExtra("TEACHER_ID",teacherId);
+               // intent.putExtra(UsersAdapter);للنقل علش الشاشة
                 startActivity(intent);
 
             }

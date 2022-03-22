@@ -1,5 +1,6 @@
 package com.amjad.school.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.amjad.school.databinding.FragmentViewTeacherBinding;
+import com.amjad.school.ui.activity.SplashActivity;
 
 
 public class ViewTeacherFragment extends Fragment {
@@ -32,5 +34,12 @@ public class ViewTeacherFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.buttonEdetTeacher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), SplashActivity.EditTeacherFragment.class));
+            }
+        });
+
     }
 }
